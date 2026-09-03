@@ -1,0 +1,50 @@
+/* Associação pelo NOME DO ELEMENTO */
+h1 {
+    color: red;
+}
+
+/* Associação pelo ID DO ELEMENTO */
+#tit_1 {
+    font-size: 40px;
+}
+
+/* Associação pela CLASSE DO ELEMENTO */
+.noticias {
+    font-family: Arial;
+}
+p, h1 {
+    background-color: lightgray;
+}
+.destaque {
+    color: blue;
+}
+table {
+    width: 100%;
+}
+table caption {
+    font-size: 30px;
+    font-weight: bold;
+}
+th {
+    background-color: gray;
+    color: white;
+}
+td {
+    background-color: azure;
+}
+
+#conteudo {
+    width: 70%;
+    background-color: blanchedalmond;
+    float: left;
+}
+#menu_contexto {
+    width: 30%;
+    background-color: lightblue;
+    float: right;
+}
+#rodape {
+    clear: both;
+    background-color: lightgray;
+    text-align: center;
+}

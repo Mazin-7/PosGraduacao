@@ -1,0 +1,794 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F5F7FA;
+    color: #333333;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+.cabecalho {
+    width: 100%;
+    padding: 20px;
+
+    /* Logo e menu lado a lado */
+    display: flex;
+
+    /* Alinha logo e menu pela parte inferior */
+    align-items: flex-end;
+
+    gap: 30px;
+
+    box-sizing: border-box;
+
+    /* NOVA COR */
+    background-color: #1E293B;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo {
+    flex-shrink: 0;
+}
+
+.logo img {
+    display: block;
+
+    width: 180px;
+    height: 180px;
+
+    /* Logo redonda */
+    border-radius: 50%;
+
+    /* Mantém a imagem preenchendo o círculo */
+    object-fit: cover;
+
+    /* Borda branca para destacar no fundo escuro */
+    border: 4px solid #FFFFFF;
+
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.03);
+}
+
+
+/* =========================================
+   MENU PRINCIPAL
+========================================= */
+
+.caixa-menuprincipal {
+    flex: 1;
+    min-width: 0;
+}
+
+.caixa-menuprincipal ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 8px;
+
+    list-style: none;
+
+    /* Azul do menu */
+    background-color: #1F2937;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.caixa-menuprincipal li {
+    margin: 0;
+    padding: 0;
+}
+
+.caixa-menuprincipal a {
+    display: block;
+
+    padding: 12px 20px;
+
+    border-radius: 8px;
+
+    /* Texto claro */
+    color: #E5E7EB;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.2s ease;
+}
+
+
+/* =========================================
+   INTERAÇÃO DO MENU
+========================================= */
+
+.caixa-menuprincipal a:hover {
+    background-color: #374151;
+
+    color: #FFFFFF;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   MENU ATIVO
+========================================= */
+
+.caixa-menuprincipal a.ativo {
+    background-color: #2563EB;
+
+    color: #FFFFFF;
+}
+
+
+/* =========================================
+   PÁGINAS INTERNAS
+========================================= */
+
+.pagina-interna {
+    width: 90%;
+    max-width: 1100px;
+
+    margin: 40px auto;
+
+    /* Fundo da página */
+    background-color: #F5F7FA;
+}
+
+
+/* =========================================
+   CABEÇALHO DA PÁGINA
+========================================= */
+
+.cabecalho-pagina {
+    margin-bottom: 30px;
+
+    text-align: center;
+}
+
+.cabecalho-pagina h1 {
+    margin: 0 0 10px 0;
+
+    /* Azul-marinho */
+    color: #1E293B;
+
+    font-size: 32px;
+}
+
+.cabecalho-pagina p {
+    margin: 0;
+
+    /* Texto secundário */
+    color: #64748B;
+
+    font-size: 16px;
+}
+
+
+/* =========================================
+   CAIXA DE CONTEÚDO
+========================================= */
+
+.caixa-conteudo {
+    display: flex;
+
+    gap: 30px;
+
+    margin-bottom: 30px;
+
+    padding: 30px;
+
+    /* Cards brancos */
+    background-color: #FFFFFF;
+
+    /* Borda suave */
+    border: 1px solid #E5E7EB;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================
+   SOBRE MIM
+========================================= */
+
+.foto-sobre {
+    flex: 0 0 300px;
+}
+
+.foto-sobre img {
+    display: block;
+
+    width: 100%;
+    height: 300px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    transition: transform 0.3s ease;
+}
+
+.foto-sobre img:hover {
+    transform: scale(1.03);
+}
+
+.texto-sobre {
+    flex: 1;
+}
+
+.texto-sobre h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+
+    /* Azul-marinho */
+    color: #1E293B;
+}
+
+.texto-sobre p {
+    margin-bottom: 15px;
+
+    /* Texto secundário */
+    color: #475569;
+}
+
+
+/* =========================================
+    CONTEÚDO LARGO
+========================================= */
+
+.conteudo-largo {
+    width: 100%;
+}
+
+.conteudo-largo h2 {
+    margin-top: 0;
+
+    color: #1E293B;
+}
+
+
+/* =========================================
+    GRADE DE ANÚNCIOS
+========================================= */
+
+.grade-anuncios {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+/* =========================================
+    CAIXA DE ANÚNCIO
+========================================= */
+
+.caixa-anuncio {
+    padding: 25px;
+
+    background-color: #FFFFFF;
+
+    border: 1px solid #E5E7EB;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.caixa-anuncio:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.caixa-anuncio h2 {
+    margin-top: 0;
+
+    color: #1E293B;
+}
+
+.caixa-anuncio p {
+    color: #475569;
+}
+
+
+/* =========================================
+    BOTÕES
+========================================= */
+
+.botao {
+    display: inline-block;
+
+    padding: 11px 18px;
+
+    /* Azul principal */
+    background-color: #2563EB;
+
+    border: none;
+
+    border-radius: 8px;
+
+    color: #FFFFFF;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.2s ease;
+}
+
+.botao:hover {
+    /* Azul mais escuro */
+    background-color: #1D4ED8;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+    ÁREA DE CONTATO
+========================================= */
+
+.area-contato {
+    display: grid;
+
+    grid-template-columns: 1fr 1.2fr;
+
+    gap: 30px;
+}
+
+
+/* =========================================
+    INFORMAÇÕES DE CONTATO
+========================================= */
+
+.informacoes-contato,
+.formulario-contato {
+    padding: 30px;
+
+    background-color: #FFFFFF;
+
+    border: 1px solid #E5E7EB;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.informacoes-contato h2,
+.formulario-contato h2 {
+    margin-top: 0;
+
+    color: #1E293B;
+}
+
+.informacoes-contato > p {
+    color: #475569;
+}
+
+
+/* =========================================
+    ITENS DE CONTATO
+========================================= */
+
+.item-contato {
+    margin-top: 25px;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.item-contato:last-child {
+    border-bottom: none;
+}
+
+.item-contato strong {
+    color: #1E293B;
+}
+
+.item-contato p {
+    margin: 5px 0 0;
+
+    color: #64748B;
+}
+
+
+/* =========================================
+    FORMULÁRIO
+========================================= */
+
+.formulario-contato form {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.formulario-contato label {
+    margin-bottom: 6px;
+
+    color: #374151;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+.formulario-contato input,
+.formulario-contato textarea {
+    width: 100%;
+
+    margin-bottom: 18px;
+
+    padding: 12px;
+
+    border: 1px solid #CBD5E1;
+
+    border-radius: 7px;
+
+    outline: none;
+
+    background-color: #FFFFFF;
+
+    color: #333333;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 14px;
+
+    transition: border-color 0.3s ease;
+}
+
+.formulario-contato input:focus,
+.formulario-contato textarea:focus {
+    border-color: #2563EB;
+
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+.formulario-contato textarea {
+    resize: vertical;
+}
+
+
+/* =========================================
+    POSTS
+========================================= */
+
+.caixa-post {
+    display: grid;
+
+    grid-template-columns: 180px 1fr;
+
+    column-gap: 25px;
+
+    margin-bottom: 30px;
+
+    padding: 20px;
+
+    /* Card branco */
+    background-color: #FFFFFF;
+
+    /* Borda suave */
+    border: 1px solid #E5E7EB;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.caixa-post:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================
+    FOTO DOS POSTS
+========================================= */
+
+.caixa-post > img {
+    display: block;
+
+    width: 180px;
+    height: 180px;
+
+    /* Mostra a foto inteira sem cortar */
+    object-fit: contain;
+
+    /* Fundo branco para completar espaços da imagem */
+    background-color: #1d1818;
+
+    /* Borda preta bem suave */
+    border: 1px solid rgba(0, 0, 0, 0.20);
+
+    border-radius: 10px;
+
+    /* Pequena sombra para destacar a foto */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.10);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+    EFEITO AO PASSAR O MOUSE
+========================================= */
+
+.caixa-post > img:hover {
+    transform: scale(1.05);
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================
+    TÍTULO DO POST
+========================================= */
+
+.caixa-post .titulo-post {
+    margin-top: 0;
+
+    margin-bottom: 10px;
+
+    /* Azul-marinho */
+    color: #1E293B;
+}
+
+
+/* =========================================
+   INFORMAÇÕES DO POST
+========================================= */
+
+.caixa-post .subtitulo-post {
+    margin-top: 0;
+
+    margin-bottom: 15px;
+
+    /* Cinza azulado */
+    color: #64748B;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   TEXTO DO POST
+========================================= */
+
+.caixa-post .texto {
+    margin-top: 0;
+
+    color: #475569;
+}
+
+
+/* =========================================
+   LEIA MAIS
+========================================= */
+
+.caixa-post .leia-mais {
+    color: #2563EB;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease,
+        transform 0.2s ease;
+}
+
+.caixa-post .leia-mais:hover {
+    color: #1D4ED8;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .pagina-interna {
+        width: 94%;
+    }
+
+    .grade-anuncios {
+        grid-template-columns: 1fr;
+    }
+
+    .area-contato {
+        grid-template-columns: 1fr;
+    }
+
+    .foto-sobre {
+        flex: 0 0 250px;
+    }
+}
+
+
+/* =========================================
+   TABLET / CELULAR
+========================================= */
+
+@media (max-width: 700px) {
+
+    /* -----------------------------------------
+       Cabeçalho
+    ----------------------------------------- */
+
+    .cabecalho {
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 20px;
+
+        padding: 15px;
+    }
+
+
+    /* -----------------------------------------
+       Logo
+    ----------------------------------------- */
+
+    .logo img {
+        width: 150px;
+
+        height: 150px;
+    }
+
+
+    /* -----------------------------------------
+       Menu
+    ----------------------------------------- */
+
+    .caixa-menuprincipal {
+        width: 100%;
+    }
+
+    .caixa-menuprincipal ul {
+        flex-wrap: wrap;
+
+        gap: 5px;
+    }
+
+    .caixa-menuprincipal a {
+        padding: 10px 14px;
+
+        font-size: 14px;
+    }
+
+
+    /* -----------------------------------------
+       Página
+    ----------------------------------------- */
+
+    .pagina-interna {
+        width: 94%;
+
+        margin: 30px auto;
+    }
+
+
+    /* -----------------------------------------
+       Título
+    ----------------------------------------- */
+
+    .cabecalho-pagina h1 {
+        font-size: 27px;
+    }
+
+
+    /* -----------------------------------------
+       Sobre
+    ----------------------------------------- */
+
+    .caixa-conteudo {
+        flex-direction: column;
+
+        padding: 20px;
+    }
+
+    .foto-sobre {
+        width: 100%;
+    }
+
+    .foto-sobre img {
+        height: auto;
+
+        max-height: 400px;
+    }
+
+
+    /* -----------------------------------------
+       Posts
+    ----------------------------------------- */
+
+    .caixa-post {
+        grid-template-columns: 1fr;
+
+        row-gap: 15px;
+    }
+
+    .caixa-post > img {
+        width: 180px;
+
+        height: 180px;
+    }
+
+
+    /* -----------------------------------------
+       Contato
+    ----------------------------------------- */
+
+    .informacoes-contato,
+    .formulario-contato {
+        padding: 20px;
+    }
+}
