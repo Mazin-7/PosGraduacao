@@ -10,10 +10,23 @@
         main {background: lightgray; width: 60%; float: left; padding: 20px;}
         aside {background: lightskyblue; width: 40%; float: left; padding: 20px;}
         footer {background: lightcyan; clear: both}
+        @media (max-width: 600px) {
+            img.logo { display: block; margin: 0 auto;
+            }
+            main, aside {width: 100%}
+        }
     </style>
 </head>
 <body>
-    <header></header>
+    <header>
+        <img class="logo" src="https://picsum.photos/200/120?random=1" alt="Imagem aleatória 1">
+
+<img src="https://picsum.photos/200/120?random=2" alt="Imagem aleatória 2">
+
+<img src="https://picsum.photos/200/120?random=3" alt="Imagem aleatória 3">
+
+<img src="https://picsum.photos/200/120?random=4" alt="Imagem aleatória 4">
+    </header>
     <main>
         <h1>Bem-vindo ao curso de Viewport</h1>
         <p>O elemento meta viewport é usado para controlar a forma como uma página da web é exibida em dispositivos móveis. Ele permite que você defina a largura e a escala da página, garantindo que o conteúdo seja exibido corretamente em diferentes tamanhos de tela.</p>
@@ -22,7 +35,7 @@
     </main>
     <aside>
         <h2>Conteúdo Adicional</h2>
-        <p>Here you can add additional content or navigation links.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic cumque sit numquam corrupti architecto, omnis accusamus ea nam, cum molestias veritatis, itaque natus maiores doloribus eaque repellendus incidunt voluptatem animi?</p>
     </aside>
     <footer>
         <p>© 2024 Curso de Viewport. Todos os direitos reservados.</p>
