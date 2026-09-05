@@ -86,4 +86,13 @@ aside > .box-lateral {
     .menu-principal > ul > li {
         display: inline-block;
     }
+    
+    .content {
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .content > .box-noticia {
+        flex: 1 1 200px;
+    }
+
 }
