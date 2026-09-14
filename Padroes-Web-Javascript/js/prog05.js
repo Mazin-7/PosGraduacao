@@ -73,3 +73,16 @@ function mensagem(nome) {
 }
 
 mensagem('Ana') */
+
+
+// 7- Expressão de função
+/* function soma(a,b){
+    return a + b;
+}
+
+let soma = function(a, b){
+    return a + b;
+}
+
+console.log(soma(10, 14)) */
+
