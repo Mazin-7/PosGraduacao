@@ -60,8 +60,7 @@ console.log(1,resultado);
 console.log(2,soma(17, 20));
 console.log(3,resultado); */
 
-
-// -6 Variaveis globais 
+// -6 Variaveis globais
 /* function soma(a, b) {
     let resultado = a + b;
     return resultado;
@@ -74,7 +73,6 @@ function mensagem(nome) {
 
 mensagem('Ana') */
 
-
 // 7- Expressão de função
 /* function soma(a,b){
     return a + b;
@@ -86,3 +84,15 @@ let soma = function(a, b){
 
 console.log(soma(10, 14)) */
 
+// 8- Expressão de funçã nomeada
+
+function fatorial(n) {
+    if (n <= 1) return 1;
+    return n * fatorial(n - 1);
+}
+
+let g = function () {
+    return 3;
+}
+
+console.log(fatorial(6));
