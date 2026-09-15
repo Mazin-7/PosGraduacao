@@ -5,11 +5,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Olá Mundo</title>
         <script>
-            function ola() {
+            /* function ola() {
                 let confirma = confirm('Confirma a operação?');
                 if (confirma) alert('Operação confirmada!');
                 else alert('Operação cancelada');
+            } */
+            /* function ola(){
+                alert("Olá Mundo!");
+            } */
+            function entrada() {
+                alert('Seja bem vindo!');
             }
+            function saida() {
+                alert('Volte sempre!');
+            }
+            window.onload = () => {
+                bt.onclick = () => {
+                    alert('Olá Mundo');
+                };
+            };
         </script>
     </head>
     <body onload="ola()">
@@ -32,5 +46,14 @@
             mostrar uma msg, pronpt para fazer uma pergunta ao usuário e o
             confirm para ter uma interação de clique
         </p>
+        <h1>Evento de Mouse</h1>
+        <p>Coloco associado a um botão como está no exemplo abaixo.</p>
+        <p><button onclick="ola()">Olá</button></p>
+        <h2>Testando Alertas</h2>
+        <p onmouseover="entrada()" onmouseout="saida()">
+            Teste de interação com os metodos onmouseover e onmouseout
+        </p>
+        <h1>Eventos criados com Js</h1>
+        <p><button id="bt">Olá</button></p>
     </body>
 </html>
