@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JavaScritp</title>
+        <script>
+            onload = () => {
+                nome.onchange = () => {
+                    console.log(`nome alterado para ${nome.value}`);
+                };
+                senha.onchange = () => {
+                    console.log(`senha alterada para ${senha.value}`);
+                };
+
+                login.onsubmit = () => {
+                    if (nome.value == '' || senha.value == '') {
+                        alert('Os campos nome e senhas são obrigatorios');
+                        return false;
+                    }
+                    return true;
+                };
+            };
+        </script>
+    </head>
+    <body>
+        <h1>JavaScript</h1>
+        <h2>Utiliznado formulario</h2>
+        <form id="login" action="login.html">
+            <p>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" />
+            </p>
+            <p>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" />
+            </p>
+            <p>
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" />
+            </p>
+            <p>
+                <label for="idade">Idade:</label>
+                <input type="number" id="idade" name="idade" />
+            </p>
+            <p>
+                <label for="data">Data:</label>
+                <input type="date" id="data" name="data" />
+            </p>
+            <p>
+                <button type="submit">Entrar</button>
+            </p>
+        </form>
+    </body>
+</html>
