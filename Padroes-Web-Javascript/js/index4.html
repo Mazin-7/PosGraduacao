@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JavaScript</title>
+        <script>
+            let usuario = {
+                nome: 'Jooao',
+                idade: 35,
+                fihos: [
+                    { nome: 'Ana', idade: 13 },
+                    { nome: 'Pedro', idade: 10 },
+                ],
+                casado: true,
+            };
+
+            localStorage.setItem('usuario', JSON.stringify(usuario));
+
+            let strUsuario = localStorage.getItem('usuario');
+            let usuario2 = JSON.parse(strUsuario);
+            console.log(usuario2, typeof usuario2);
+        </script>
+    </head>
+    <body>
+        <h1>JavaScript</h1>
+        <h2>Armazenamento Local</h2>
+        <h3>Operações!</h3>
+
+        <p>localStorage.setItem('usuario', JSON.stringify(usuario));</p>
+        <p>Está o operaço armazena o objeto locamente.</p>
+    </body>
+</html>
