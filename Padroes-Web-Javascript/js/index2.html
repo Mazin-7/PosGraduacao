@@ -6,20 +6,41 @@
         <title>JavaScritp</title>
         <script>
             onload = () => {
-                nome.onchange = () => {
-                    console.log(`nome alterado para ${nome.value}`);
-                };
-                senha.onchange = () => {
-                    console.log(`senha alterada para ${senha.value}`);
+                nome.onblur = () => {
+                    if (nome.value == '') {
+                        nome_erro.innerHTML = '!';
+                        nome.style.backgroundColor = '#F88';
+                    } else {
+                        nome_erro.innerHTML = '';
+                        nome.style.backgroundColor = '#FFF';
+                    }
                 };
 
-                login.onsubmit = () => {
-                    if (nome.value == '' || senha.value == '') {
-                        alert('Os campos nome e senhas são obrigatorios');
-                        return false;
+                if (nome.value != '' && senha.value != '')
+                    btnsubmit.disabled = false;
+                else btnsubmit.disabled = true;
+
+                senha.onblur = () => {
+                    if (senha.value == '') {
+                        senha_erro.innerHTML = '!';
+                        senha.style.backgroundColor = '#F88';
+                    } else {
+                        senha_erro.innerHTML = '';
+                        senha.style.backgroundColor = '#FFF';
                     }
-                    return true;
                 };
+
+                if (nome.value != '' && senha.value != '')
+                    btnsubmit.disabled = false;
+                else btnsubmit.disabled = true;
+            };
+
+            login.onsubmit = () => {
+                if (nome.value == '' || senha.value == '') {
+                    alert('Os campos nome e senhas são obrigatorios');
+                    return false;
+                }
+                return true;
             };
         </script>
     </head>
@@ -30,6 +51,7 @@
             <p>
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome" />
+                <samp id="nome_erro"></samp>
             </p>
             <p>
                 <label for="email">Email:</label>
@@ -38,6 +60,7 @@
             <p>
                 <label for="senha">Senha:</label>
                 <input type="password" id="senha" name="senha" />
+                <samp id="senha_erro"></samp>
             </p>
             <p>
                 <label for="idade">Idade:</label>
@@ -48,7 +71,7 @@
                 <input type="date" id="data" name="data" />
             </p>
             <p>
-                <button type="submit">Entrar</button>
+                <button id="btnsubmit" type="submit" disabled>Entrar</button>
             </p>
         </form>
     </body>
