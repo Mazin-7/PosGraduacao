@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JavaScritp</title>
+        <script>
+            let usuario = {
+                nome: 'João',
+                idade: 35,
+                filhos: [
+                    { nome: 'Ana', idade: 13 },
+                    { nome: 'Pedro', idade: 10 },
+                ],
+                casado: true,
+            };
+
+            let strUsuario = JSON.stringify(usuario);
+            console.log(1, usuario, typeof usuario);
+            console.log(2, strUsuario, typeof strUsuario);
+
+            let strUsuario2 =
+                '{"nome":"João","idade":35,"filhos":[{"nome":"Ana","ido","idade":10}],"casado":true}';
+
+            try {
+                let usuario2 = JSON.parse(strUsuario2);
+                console.log(3, usuario2, typeof usuario);
+            } catch (e) {
+                console.log('Erro');
+            }
+        </script>
+    </head>
+    <body></body>
+</html>
