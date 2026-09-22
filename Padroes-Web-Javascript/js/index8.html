@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JavaScritp</title>
+        <script>
+            let livros = [
+                { id: 1, titulo: 'Ilíada', autor: 'Homero' },
+                { id: 2, titulo: 'Odisseia', autor: 'Homero' },
+            ];
+            let bd;
+            let reqBD = indexedDB.open('meuBD', 1);
+            reqBD.onsuccess = () => {
+                bd = reqBD.result;
+            };
+            reqBD.onerror = () => {
+                console.log(reqBD.error);
+            };
+            reqBD.onupgradeneeded = (e) => {
+                bd = reqBD.result;
+                if (!bd.objectStoreNames.contains('livros'))
+                    bd.createObjectStore('livros', { keyPath: 'id' });
+            };
+
+            onload = () => {};
+        </script>
+    </head>
+    <body>
+        <h1>JavaScript</h1>
+        <p id="output"></p>
+    </body>
+</html>
