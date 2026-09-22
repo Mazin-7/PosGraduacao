@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JavaScript</title>
+        <script>
+            onload = () => {
+                let geo = navigator.geolocation;
+                const geoCoords = function (p) {
+                    let lat = p.coords.latitude;
+                    let lng = p.coords.longitude;
+                    output.innerHTML = `Cordenadas: (${lat}; ${lng})`;
+                };
+                const geoErro = function (e) {
+                    console.log(e);
+                };
+                let watchID = geo.watchPosition(geoCoords, geoErro);
+                console.log(watchID);
+                stWatch.onclik = () => {
+                    console.log(watchID);
+                    geo.clearWatch(watchID);
+                };
+            };
+        </script>
+    </head>
+    <body>
+        <h1>JavaScritp</h1>
+        <p id="output"></p>
+        <p><button id="stWatch">Para georeferinciamento</button></p>
+    </body>
+</html>
