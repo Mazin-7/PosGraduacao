@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JavaScript</title>
+        <script>
+            function ajax() {
+                try {
+                    let xhttp = new XMLHttpRequest();
+
+                    xhttp.onreadystatechange = function () {
+                        if (xhttp.readyState == 4) {
+                            if (xhttp.status == 200) {
+                                let objeto = JSON.parse(xhttp.responseText);
+                                /*resposta.innerHTML = objeto.data
+                                    .map((e) => e.email)
+                                    .join('<br/>');*/
+                                console.log(objeto);
+                            } else {
+                                console.warn('status: ' + xhttp.status);
+                            }
+                        }
+                    };
+
+                    xhttp.open(
+                        'GET',
+                        'https://reqres.in/api/users?page=2',
+                        true,
+                    );
+                    xhttp.send();
+                } catch (e) {
+                    alert('Erro na comunicação com o servidor');
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>JavaScript</h1>
+        <button onclick="ajax()">Carrega usuario</button>
+        <p id="resposta" style="border: thin solid black; padding: 2ex"></p>
+    </body>
+</html>
