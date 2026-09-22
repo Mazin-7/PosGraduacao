@@ -1,0 +1,9 @@
+{
+    "nome": "João",
+    "idade": 35,
+    "filhos": [
+        { "nome": "Ana", "idade": 13 },
+        { "nome": "Pedro", "idade": 10 }
+    ],
+    "casado": true
+}
