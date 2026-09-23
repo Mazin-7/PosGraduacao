@@ -5,10 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>JavaScritp</title>
         <script>
-            let livros = [
-                { id: 1, titulo: 'Ilíada', autor: 'Homero' },
-                { id: 2, titulo: 'Odisseia', autor: 'Homero' },
-            ];
             let bd;
             let reqBD = indexedDB.open('meuBD', 1);
             reqBD.onsuccess = () => {
@@ -19,15 +15,77 @@
             };
             reqBD.onupgradeneeded = (e) => {
                 bd = reqBD.result;
+                console.log(reqBD.error);
                 if (!bd.objectStoreNames.contains('livros'))
                     bd.createObjectStore('livros', { keyPath: 'id' });
             };
 
-            onload = () => {};
+            onload = () => {
+                btnC.onclick = () => {
+                    let livro = {
+                        id: idLivro.value,
+                        titulo: titulo.value,
+                        autor: autor.value,
+                    };
+                    let transacaoBD = bd.transaction(['livros'], 'readwrite');
+                    let livrosOS = transacaoBD.objectStore('livros');
+                    let reqOS = livrosOS.add(livro);
+                    reqOS.onsuccess = (e) => {
+                        console.log(reqOS.result);
+                    };
+                    reqOS.onerror = (e) => {
+                        console.log(reqOS.error);
+                    };
+                };
+
+                btnR.onclick = () => {
+                    bd
+                        .transaction('livros')
+                        .objectStore('livros')
+                        .get(idLivro.value).onsuccess = (e) => {
+                        titulo.value = e.target.result.titulo;
+                        autor.value = e.target.result.autor;
+                    };
+                };
+                btnD.onclick = () => {
+                    bd
+                        .transaction(['livros'], 'readwrite')
+                        .objectStore('livros')
+                        .delete(idLivro.value).onsuccess = (e) => {
+                        console.log('Livro excluído');
+                    };
+                };
+                btnU.onclick = () => {
+                    let livro = {
+                        id: idLivro.value,
+                        titulo: titulo.value,
+                        autor: autor.value,
+                    };
+                    bd
+                        .transaction(['livros'], 'readwrite')
+                        .objectStore('livros')
+                        .put(livro).onsuccess = (e) => {
+                        console.log('Livro Atualizado');
+                    };
+                };
+            };
         </script>
     </head>
     <body>
         <h1>JavaScript</h1>
+        <p>
+            <label for="idLivro">ID:</label><input type="number" id="idLivro" />
+        </p>
+        <p>
+            <label for="titulo">Título:</label><input type="text" id="titulo" />
+        </p>
+        <p><label for="autor">Autor:</label><input type="text" id="autor" /></p>
+        <p>
+            <button id="btnC">Incluir</button>
+            <button id="btnR">Ler</button>
+            <button id="btnD">Excluir</button>
+            <button id="btnU">Atualizar</button>
+        </p>
         <p id="output"></p>
     </body>
 </html>
