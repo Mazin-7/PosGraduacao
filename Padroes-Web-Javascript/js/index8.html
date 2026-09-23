@@ -16,14 +16,23 @@
             reqBD.onupgradeneeded = (e) => {
                 bd = reqBD.result;
                 console.log(reqBD.error);
-                if (!bd.objectStoreNames.contains('livros'))
-                    bd.createObjectStore('livros', { keyPath: 'id' });
+                if (!bd.objectStoreNames.contains('livros')) {
+                    let livrosOS = bd.createObjectStore('livros', {
+                        keyPath: 'id',
+                    });
+                    livrosOS.createIndex('tituloIDX', 'titulo', {
+                        unique: false,
+                    });
+                    livrosOS.createIndex('autorIDX', 'autor', {
+                        unique: false,
+                    });
+                }
             };
 
             onload = () => {
                 btnC.onclick = () => {
                     let livro = {
-                        id: idLivro.value,
+                        id: +idLivro.value,
                         titulo: titulo.value,
                         autor: autor.value,
                     };
@@ -42,7 +51,7 @@
                     bd
                         .transaction('livros')
                         .objectStore('livros')
-                        .get(idLivro.value).onsuccess = (e) => {
+                        .get(+idLivro.value).onsuccess = (e) => {
                         titulo.value = e.target.result.titulo;
                         autor.value = e.target.result.autor;
                     };
@@ -51,13 +60,13 @@
                     bd
                         .transaction(['livros'], 'readwrite')
                         .objectStore('livros')
-                        .delete(idLivro.value).onsuccess = (e) => {
+                        .delete(+idLivro.value).onsuccess = (e) => {
                         console.log('Livro excluído');
                     };
                 };
                 btnU.onclick = () => {
                     let livro = {
-                        id: idLivro.value,
+                        id: +idLivro.value,
                         titulo: titulo.value,
                         autor: autor.value,
                     };
@@ -66,6 +75,43 @@
                         .objectStore('livros')
                         .put(livro).onsuccess = (e) => {
                         console.log('Livro Atualizado');
+                    };
+                };
+                btnL.onclick = () => {
+                    bd
+                        .transaction('livros')
+                        .objectStore('livros')
+                        .openCursor().onsuccess = (e) => {
+                        let cursor = e.target.result;
+                        if (cursor) {
+                            console.log(cursor.value);
+                            cursor.continue();
+                        } else {
+                            console.log('fim');
+                        }
+                    };
+                };
+                btnRT.onclick = () => {
+                    bd
+                        .transaction('livros')
+                        .objectStore('livros')
+                        .index('tituloIDX')
+                        .get(titulo.value).onsuccess = (e) => {
+                        idLivro.value = e.target.result.id;
+                        titulo.value = e.target.result.titulo;
+                        autor.value = e.target.result.autor;
+                    };
+                };
+
+                btnLA.onclick = () => {
+                    bd
+                        .transaction('livros')
+                        .objectStore('livros')
+                        .index('autorIDX')
+                        .getAll(IDBKeyRange.only(autor.value)).onsuccess = (
+                        e,
+                    ) => {
+                        console.log(e.target.result);
                     };
                 };
             };
@@ -85,6 +131,9 @@
             <button id="btnR">Ler</button>
             <button id="btnD">Excluir</button>
             <button id="btnU">Atualizar</button>
+            <button id="btnL">Listagem</button>
+            <button id="btnRT">Ler por título</button>
+            <button id="btnLA">Listagem por autor</button>
         </p>
         <p id="output"></p>
     </body>
