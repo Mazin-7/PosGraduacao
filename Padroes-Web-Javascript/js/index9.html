@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JavaScritp</title>
+        <script>
+            onload = () => {
+                arquivo.onchange = () => {
+                    let fr = new FileReader();
+                    fr.readAsDataURL(arquivo.files[0]);
+                    fr.onload = (e) => {
+                        output.innerHTML = `<img src="${e.target.result}" />`;
+                    };
+                };
+                btnArquivos.onclick = () => {
+                    arquivo.click();
+                };
+            };
+        </script>
+    </head>
+    <body>
+        <h1>JavaScritp</h1>
+        <h2>File</h2>
+        <p>
+            <input
+                id="arquivo"
+                type="file"
+                style="display: none"
+                accept="image/png"
+            />
+            <button id="btnArquivos">Escolher arquivos</button>
+        </p>
+        <p id="output"></p>
+    </body>
+</html>
