@@ -4,6 +4,12 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=3, initial-scale=1.0" />
         <title>JavaScript</title>
+        <style>
+            .alerta {
+                color: #fff;
+                background-color: #f00;
+            }
+        </style>
         <script
             src="https://code.jquery.com/jquery-4.0.0.min.js"
             integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao="
@@ -11,14 +17,20 @@
         ></script>
         <script>
             $(document).ready(function () {
-                $('#btn').click(function () {
-                    alert('Yeeeyyy. Você clicou.');
+                $('#btn').click(() => {
+                    $('div p').toggleClass('alerta');
                 });
             });
         </script>
     </head>
     <body>
-        <h1>jQuery</h1>
+        <h1>jQuery Manipulado pagina</h1>
         <p><button id="btn">Clique aqui!</button></p>
+        <div>
+            <p id="p1">Primeiro paragrafo</p>
+        </div>
+
+        <p id="p2">Segundo paragrafo</p>
+        <p id="p3">Terceiro paragrafo</p>
     </body>
 </html>
