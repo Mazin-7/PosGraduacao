@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JavaScript</title>
+        <style>
+            #desenho {
+                border: thin solid black;
+            }
+        </style>
+        <script>
+            onload = () => {
+                if (desenho.getContext) {
+                    let ctx = desenho.getContext('2d');
+                    ctx.beginPath();
+                    ctx.arc(75, 75, 50, 0, 2 * Math.PI);
+                    ctx.stroke()
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <h1>JavaScript</h1>
+        <canvas id="desenho" width="300" height="150">
+            Seu navegador não suporta canvas.
+        </canvas>
+    </body>
+</html>
