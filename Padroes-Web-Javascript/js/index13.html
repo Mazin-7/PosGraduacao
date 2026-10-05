@@ -17,20 +17,23 @@
         ></script>
         <script>
             $(document).ready(function () {
-                $('#btn').click(() => {
-                    $('div p').toggleClass('alerta');
-                });
+                let listaIds = $('p')
+                    .map(function () {
+                        return $(this).attr('id');
+                    })
+                    .get();
+                console.log(listaIds.join(', '));
             });
         </script>
     </head>
     <body>
-        <h1>jQuery Manipulado pagina</h1>
-        <p><button id="btn">Clique aqui!</button></p>
+        <h1>jQuery Manipulado Filtros</h1>
         <div>
             <p id="p1">Primeiro paragrafo</p>
+            <p id="p2">Segundo paragrafo</p>
+            <p id="p3">Terceiro paragrafo</p>
+            <p id="p4">Quarto paragrafo</p>
+            <p id="p5">Quinto paragrafo</p>
         </div>
-
-        <p id="p2">Segundo paragrafo</p>
-        <p id="p3">Terceiro paragrafo</p>
     </body>
 </html>
