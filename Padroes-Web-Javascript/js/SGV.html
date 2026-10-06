@@ -9,12 +9,22 @@
         <script src="grafico.js"></script>
         <script>
             onload = () => {
-                let dados = [156, 27, 120, 115, 44, 260, 113];
+                let dados = [
+                    { chave: 'Frango', valor: 56 },
+                    { chave: 'Carne', valor: 73 },
+                    { chave: 'Vegetariano', valor: 20 },
+                    { chave: 'Queijo', valor: 115 },
+                    { chave: 'Goiabada', valor: 44 },
+                    { chave: 'Banana', valor: 60 },
+                    { chave: 'Calabresa', valor: 33 },
+                ];
                 grafico({
                     seletor: '#grafico',
                     dados: dados,
                     largura: 600,
                     altura: 400,
+                    tituloX: 'Tipos de pastéis',
+                    tituloY: 'Quantidade diária',
                 });
             };
         </script>

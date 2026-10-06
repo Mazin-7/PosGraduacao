@@ -1,12 +1,30 @@
 #grafico {
-                border: thick solid black;
-                width: 600px;
-                height: 400px;
-            }
-            .barra {
-                fill: lightblue;
-                stroke: black;
-            }
-            .rotulo {
-                text-anchor: middle;
-            }
+    border: thick solid black;
+    width: 600px;
+    height: 400px;
+}
+.barra {
+    stroke: black;
+}
+.rotulo {
+    text-anchor: middle;
+}
+
+#eixoX text {
+    font-size: 120%;
+    text-anchor: end;
+    transform: translate(-8px, 2px) rotate(-45deg);
+}
+
+#eixoY text {
+    font-size: 120%;
+}
+
+#grade path{
+    display: none;
+}
+
+#grade line{
+    stroke: #aaa;
+    stroke-dasharray: 2,2;
+}
