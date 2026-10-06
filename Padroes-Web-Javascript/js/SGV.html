@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SVG</title>
+        <link href="grafico.css" rel="stylesheet" />
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script src="grafico.js"></script>
+        <script>
+            onload = () => {
+                let dados = [156, 27, 120, 115, 44, 260, 113];
+                grafico({
+                    seletor: '#grafico',
+                    dados: dados,
+                    largura: 600,
+                    altura: 400,
+                });
+            };
+        </script>
+    </head>
+    <body>
+        <h1>SVG</h1>
+        <h2>Exemplo de Gráfico!</h2>
+        <svg id="grafico" width="500" height="300"></svg>
+    </body>
+</html>
