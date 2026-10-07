@@ -1,7 +1,5 @@
 #grafico {
-    border: thick solid black;
-    width: 600px;
-    height: 400px;
+    shape-rendering: crispEdges;
 }
 .barra {
     stroke: black;
@@ -20,11 +18,21 @@
     font-size: 120%;
 }
 
-#grade path{
+#grade path {
     display: none;
 }
 
-#grade line{
+#grade line {
     stroke: #aaa;
-    stroke-dasharray: 2,2;
+    stroke-dasharray: 2, 2;
+}
+
+figure {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+figcaption {
+    font-size: xx-large;
+    font-weight: bold;
 }

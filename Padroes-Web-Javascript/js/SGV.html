@@ -8,6 +8,7 @@
         <script src="https://d3js.org/d3.v7.min.js"></script>
         <script src="grafico.js"></script>
         <script>
+            const clicado = (d) => elert(d.chave + ': ' + d.valor);
             onload = () => {
                 let dados = [
                     { chave: 'Frango', valor: 56 },
@@ -18,20 +19,43 @@
                     { chave: 'Banana', valor: 60 },
                     { chave: 'Calabresa', valor: 33 },
                 ];
-                grafico({
+                let graf = new Grafico({
                     seletor: '#grafico',
                     dados: dados,
                     largura: 600,
                     altura: 400,
                     tituloX: 'Tipos de pastéis',
                     tituloY: 'Quantidade diária',
+                    cllbck: clicado,
                 });
+
+                crescente.onclick = () => {
+                    dados.sort((a, b) => a.valor - b.valor);
+                    graf.atualize(dados);
+                };
+
+                decrescente.onclick = () => {
+                    dados.sort((a, b) => b.valor - a.valor);
+                    graf.atualize(dados);
+                };
+
+                alfabetica.onclick = () => {
+                    dados.sort((a, b) => a.chave.localeCompare(b.chave));
+                    graf.atualize(dados);
+                };
             };
         </script>
     </head>
     <body>
-        <h1>SVG</h1>
-        <h2>Exemplo de Gráfico!</h2>
+        <figure>
+        <figcaption>Gráfico de barras com D3.js</figcaption>
+        <h2>Vendas médias diarias</h2>
         <svg id="grafico" width="500" height="300"></svg>
+        <p>
+            <button id="crescente">Ordenar Crescente</button>
+            <button id="decrescente">Ordenar Decrescente</button>
+            <button id="alfabetica">Ordenar Alfabética</button>
+            </figure>
+        </p>
     </body>
 </html>
