@@ -16,8 +16,7 @@ function Grafico(parametros) {
     this.larguraPlotagem =
         parametros.largura - margem.esquerda - margem.direita;
 
-    this.alturaPlotagem =
-        parametros.altura - margem.superior - margem.inferior;
+    this.alturaPlotagem = parametros.altura - margem.superior - margem.inferior;
 
     this.plotagem = svg
         .append('g')
@@ -25,11 +24,7 @@ function Grafico(parametros) {
         .attr('height', this.alturaPlotagem)
         .attr(
             'transform',
-            'translate(' +
-                margem.esquerda +
-                ', ' +
-                margem.superior +
-                ')',
+            'translate(' + margem.esquerda + ', ' + margem.superior + ')',
         );
 
     this.fnX = d3
@@ -40,10 +35,7 @@ function Grafico(parametros) {
 
     this.fnY = d3
         .scaleLinear()
-        .domain([
-            0,
-            d3.max(parametros.dados, (d) => d.valor),
-        ])
+        .domain([0, d3.max(parametros.dados, (d) => d.valor)])
         .range([this.alturaPlotagem, 0]);
 
     this.fnCores = d3
@@ -56,30 +48,19 @@ function Grafico(parametros) {
     this.plotagem
         .append('g')
         .attr('id', 'eixoX')
-        .attr(
-            'transform',
-            'translate(0, ' +
-                this.alturaPlotagem +
-                ')',
-        )
+        .attr('transform', 'translate(0, ' + this.alturaPlotagem + ')')
         .call(this.eixoX);
 
     this.eixoY = d3.axisLeft(this.fnY);
 
-    this.plotagem
-        .append('g')
-        .attr('id', 'eixoY')
-        .call(this.eixoY);
+    this.plotagem.append('g').attr('id', 'eixoY').call(this.eixoY);
 
     let grade = d3
         .axisRight(this.fnY)
         .tickSize(this.larguraPlotagem)
         .tickFormat('');
 
-    this.plotagem
-        .append('g')
-        .attr('id', 'grade')
-        .call(grade);
+    this.plotagem.append('g').attr('id', 'grade').call(grade);
 
     svg.append('text')
         .attr('x', 0)
@@ -88,37 +69,22 @@ function Grafico(parametros) {
         .attr(
             'transform',
             'translate(30, ' +
-                (margem.superior +
-                    this.alturaPlotagem / 2) +
+                (margem.superior + this.alturaPlotagem / 2) +
                 ') rotate(-90)',
         )
         .text(parametros.tituloY);
 
     svg.append('text')
         .attr('x', margem.esquerda)
-        .attr(
-            'y',
-            margem.superior +
-                this.alturaPlotagem,
-        )
+        .attr('y', margem.superior + this.alturaPlotagem)
         .style('text-anchor', 'middle')
-        .attr(
-            'transform',
-            'translate(' +
-                this.larguraPlotagem / 2 +
-                ', 80)',
-        )
+        .attr('transform', 'translate(' + this.larguraPlotagem / 2 + ', 80)')
         .text(parametros.tituloX);
 
     this.atualize = (dados) => {
-        this.fnX.domain(
-            dados.map((d) => d.chave),
-        );
+        this.fnX.domain(dados.map((d) => d.chave));
 
-        this.fnY.domain([
-            0,
-            d3.max(dados, (d) => d.valor),
-        ]);
+        this.fnY.domain([0, d3.max(dados, (d) => d.valor)]);
 
         this.fnCores.domain([0, dados.length]);
 
@@ -140,78 +106,41 @@ function Grafico(parametros) {
             .duration(this.duration)
             .call(grade);
 
-        let retangulos = this.plotagem
-            .selectAll('.barra')
-            .data(dados);
+        let retangulos = this.plotagem.selectAll('.barra').data(dados);
 
-        retangulos
-            .enter()
-            .append('rect')
-            .classed('barra', true);
+        retangulos.enter().append('rect').classed('barra', true);
 
         retangulos.exit().remove();
 
         this.plotagem
             .selectAll('.barra')
             .on('mouseover', function () {
-                d3.select(this).style(
-                    'fill-opacity',
-                    0.5,
-                );
+                d3.select(this).style('fill-opacity', 0.5);
             })
             .on('mouseout', function () {
-                d3.select(this).style(
-                    'fill-opacity',
-                    1,
-                );
+                d3.select(this).style('fill-opacity', 1);
             })
             .on('click', function () {
                 let barra = d3.select(this);
 
-                let atual =
-                    barra.style('fill-opacity');
+                let atual = barra.style('fill-opacity');
 
-                barra.style(
-                    'fill-opacity',
-                    atual === '0.5' ? 1 : 0.5,
-                );
+                barra.style('fill-opacity', atual === '0.5' ? 1 : 0.5);
             });
 
         this.plotagem
             .selectAll('.barra')
             .transition()
             .duration(this.duration)
-            .attr(
-                'x',
-                (d) => this.fnX(d.chave),
-            )
-            .attr(
-                'y',
-                (d) => this.fnY(d.valor),
-            )
-            .attr(
-                'width',
-                this.fnX.bandwidth(),
-            )
-            .attr(
-                'height',
-                (d) =>
-                    this.alturaPlotagem -
-                    this.fnY(d.valor),
-            )
-            .attr(
-                'fill',
-                (d, i) => this.fnCores(i),
-            );
+            .attr('x', (d) => this.fnX(d.chave))
+            .attr('y', (d) => this.fnY(d.valor))
+            .attr('width', this.fnX.bandwidth())
+            .attr('height', (d) => this.alturaPlotagem - this.fnY(d.valor))
+            .attr('fill', (d, i) => this.fnCores(i));
 
-        let rotulos = this.plotagem
-            .selectAll('.rotulo')
-            .data(dados);
+        let rotulos = this.plotagem.selectAll('.rotulo').data(dados);
 
-        rotulos
-            .enter()
-            .append('text')
-            .classed('rotulo', true);
+        rotulos.enter().append('text').classed('rotulo', true);
 
         rotulos.exit().remove();
 
@@ -220,18 +149,9 @@ function Grafico(parametros) {
             .transition()
             .duration(this.duration)
             .text((d) => d.valor)
-            .attr(
-                'x',
-                (d) => this.fnX(d.chave),
-            )
-            .attr(
-                'dx',
-                () => this.fnX.bandwidth() * 0.5,
-            )
-            .attr(
-                'y',
-                (d) => this.fnY(d.valor),
-            )
+            .attr('x', (d) => this.fnX(d.chave))
+            .attr('dx', () => this.fnX.bandwidth() * 0.5)
+            .attr('y', (d) => this.fnY(d.valor))
             .attr('dy', -5);
     };
 
