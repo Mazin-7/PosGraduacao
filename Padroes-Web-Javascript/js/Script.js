@@ -1,12 +1,15 @@
-function criaContador() {
-    let n = 0;
-    return function () {
-        console.log(n++);
-    };
+function digaOla(idioma) {
+    return function(nome){
+        switch (idioma) {
+            case 'es': console.log(`Hola ${nome}`); break;
+            case 'en': console.log(`Hello ${nome}`); break;
+            case 'fr': console.log(`Bonjour ${nome}`); break;
+            default: console.log(`Olá ${nome}`); break;
+        }
+    } 
 }
 
-let contador = criaContador();
-contador();
-contador();
-contador();
-contador();
+
+let ola = digaOla('fr');
+ola('Juan'); // Output: Bonjour Juan
+ola('Maria'); // Output: Bonjour Maria
