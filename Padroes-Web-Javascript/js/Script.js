@@ -1,9 +1,12 @@
-function Pessoa(n) {
-    this.nome = n;
-    this.fn = function () {
-        console.log(this);
-    };
+let forma = {
+    x: 10,
+    y: 15,
+};
+
+let retangulo = {
+    largura: 100,
+    altura: 50
 }
 
-let p = new Pessoa('Marcos');
-p.fn();
+console.log(forma);
+console.log(retangulo);
