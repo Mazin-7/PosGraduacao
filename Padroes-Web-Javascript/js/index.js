@@ -6,7 +6,7 @@ output.innerHTML = `
 `;
 translate.engine = 'libre';
 translate.from = 'pt';
-translate.from = 'en';
+translate.to = 'es';
 
 output2.innerHTML = `
 <p>
