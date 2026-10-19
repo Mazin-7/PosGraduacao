@@ -1,0 +1,16 @@
+{
+    "name": "myapp",
+    "version": "1.0.0",
+    "description": "Minha aplicação de teste",
+    "license": "ISC",
+    "author": "Gilmar Oliveira",
+    "type": "commonjs",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "translate": "^3.1.0",
+        "uuid": "^14.0.3"
+    }
+}
