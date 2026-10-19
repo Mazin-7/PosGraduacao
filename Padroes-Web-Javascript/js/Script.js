@@ -1,21 +1,22 @@
-function Forma(x, y) {
-    this.x = x;
-    this.y = y;
-}
+output.innerHTML = `
+    <p>
+        <input type="text" id="nome"/>
+        <button id="btn">ok</button>
+    </p>
+    <p id="resultado"></p>
+`;
 
-function Retangulo(x, y, l, a) {
-    Forma.call(this, x, y);
-    this.largura = l;
-    this.altura = a;
-}
-
-let r1 = new Retangulo(10, 15, 100, 50);
-
-Forma.prototype.move = function (dx, dy) {
-    this.x += dx;
-    this.y += dy;
+btn.onclick = () => {
+    let hoje = new Date();
+    let horas = hoje.getHours();
+    let mensagem = '';
+    if (horas < 12) mensagem += 'Bom dia, ';
+    else if (horas < 18) mensagem += 'Boa tarde, ';
+    else mensagem += 'Boa noite, ';
+    mensagem += getNome();
+    resultado.innerHTML = mensagem;
 };
 
-//r1.move(15, 15);
-
-console.log(r1);
+function getNome() {
+    return nome.value;
+}
